@@ -7,30 +7,25 @@ let n = 7
 
 // Add your code below:
 
-var multi = 1
-func countDown(num: Int) {
-    if num >= 0 {
-        if num > 0 {
-            print("Calculating factorial(\(num))...")
-        } else {
-            print("Terminal case, returning 1.")
-        }
-        if num > 0 {
-            countDown(num: num - 1)
-            multi = num*multi
-            if multi != 1 {
-                print("Non-terminal case, returning \(multi).")
-            }
-        }
-    } else {
-        print("Calculating factorial(\(num))...")
+//Function to calculate factorial
+func fact(_ n: Int) -> Int {
+    print("Calculating factorial(\(n))...")
+//Factorial of 1 equals 1
+    if n <= 1 {
         print("Terminal case, returning 1.")
+        return 1
+    } else {
+//Starts recursion by calling itself
+        let num = fact(n-1) * n
+        print("Non-terminal case, returning \(num).")
+//Returns number to be used by previous call
+        return num
     }
 }
-countDown(num: n)
 
-if n > 0 {
-    print("The final result is: \(multi).")
-} else {
-    print("The final result is: 1.")
+//Function to print final result by calling the factorial function
+func caller(_ n: Int) {
+    print("The final result is: \(fact(n)).")
 }
+//Function call
+caller(n)
